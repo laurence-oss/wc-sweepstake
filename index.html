@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>World Cup 2026 — Knockout Goals Sweepstake</title>
+<style>
+  :root{
+    --stripe-a:#2f9e44; --stripe-b:#2a8a3c;
+    --chalk:rgba(255,255,255,.5); --chalk-strong:rgba(255,255,255,.82);
+    --panel:rgba(8,40,22,.86); --panel2:rgba(5,30,17,.72);
+    --line:rgba(255,255,255,.18); --text:#f2f8f3; --muted:#bcd8c6; --muted2:#8fb39c;
+    --gold:#ffd24a; --gold-dim:#d8a93a; --green:#5be08a; --red:#ff5252;
+    --blue:#cfe9d6;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--text);line-height:1.5;min-height:100vh;
+    padding:18px;-webkit-font-smoothing:antialiased;
+    background-color:var(--stripe-b);
+    background-image:repeating-linear-gradient(180deg,
+      var(--stripe-a) 0, var(--stripe-a) 84px,
+      var(--stripe-b) 84px, var(--stripe-b) 168px);
+    background-attachment:fixed;
+  }
+  .wrap{max-width:880px;margin:0 auto;position:relative;z-index:1}
+  .pitch{position:fixed;inset:14px;z-index:0;pointer-events:none;border:2px solid var(--chalk);border-radius:4px}
+  .pitch .half{position:absolute;left:0;right:0;top:50%;height:2px;background:var(--chalk)}
+  .pitch .circle{position:absolute;left:50%;top:50%;width:min(34vw,240px);height:min(34vw,240px);transform:translate(-50%,-50%);border:2px solid var(--chalk);border-radius:50%}
+  .pitch .spot{position:absolute;left:50%;top:50%;width:8px;height:8px;transform:translate(-50%,-50%);background:var(--chalk);border-radius:50%}
+  .pitch .box{position:absolute;left:50%;transform:translateX(-50%);width:min(46vw,300px);height:92px;border:2px solid var(--chalk)}
+  .pitch .box.t{top:-2px;border-top:none}
+  .pitch .box.b{bottom:-2px;border-bottom:none}
+  .pitch .box.t::after,.pitch .box.b::after{content:"";position:absolute;left:50%;width:7px;height:7px;transform:translateX(-50%);background:var(--chalk);border-radius:50%}
+  .pitch .box.t::after{top:60px}
+  .pitch .box.b::after{bottom:60px}
+  .num{font-variant-numeric:tabular-nums}
+  a{color:var(--blue)}
+
+  header.top{margin-bottom:18px}
+  .kicker{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:600}
+  h1{font-size:25px;font-weight:700;margin:4px 0 6px;letter-spacing:-.01em}
+  .sub{color:var(--muted);font-size:13.5px;max-width:660px}
+  .asof{color:var(--muted2);font-size:12px;margin-top:8px;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--gold);display:inline-block;box-shadow:0 0 0 3px rgba(255,210,74,.22)}
+
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 16px;margin:14px 0}
+  .card h2{font-size:15px;font-weight:600;display:flex;align-items:center;gap:8px;margin-bottom:2px}
+  .card .hint{color:var(--muted);font-size:12.5px;margin-bottom:12px}
+  .ic{font-size:16px;color:var(--gold)}
+
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+  .stat{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:13px 13px}
+  .stat .lab{font-size:11.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+  .stat .val{font-size:30px;font-weight:700;margin-top:4px;letter-spacing:-.02em}
+  .stat .val small{font-size:14px;font-weight:500;color:var(--muted)}
+  .stat .meta{font-size:11.5px;color:var(--muted2);margin-top:2px}
+  .stat.hero .val{color:var(--gold)}
+
+  .pbar{position:relative;height:66px;margin-top:4px}
+  .pcap{position:absolute;top:0;font-size:11px;font-weight:600;white-space:nowrap}
+  .ptrack{position:absolute;left:0;right:0;top:26px;height:14px;background:var(--panel2);border-radius:7px;overflow:hidden}
+  .pfill{height:100%;background:var(--gold);border-radius:7px;min-width:3px;transition:width .3s}
+  .pmk{position:absolute;top:22px;width:12px;height:22px;transform:translateX(-50%);cursor:pointer}
+  .pmk::before{content:"";position:absolute;left:50%;top:0;transform:translateX(-50%);width:2px;height:100%;background:var(--chalk-strong)}
+  .pmk.hl::before{background:var(--red);width:3px}
+  .pmk-tip{position:absolute;top:0;transform:translateX(-50%);background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:6px;padding:2px 8px;font-size:11px;font-weight:600;white-space:nowrap;z-index:6;display:none;pointer-events:none}
+  .lb tr.hl td{background:rgba(255,82,82,.13)}
+  .lb tr.hl .pname{color:var(--red)}
+  .lb tr.hl .barfill{background:var(--red)}
+  .paxis{position:absolute;top:46px;left:0;right:0}
+  .ptick{position:absolute;top:46px;transform:translateX(-50%);font-size:10px;color:var(--muted2)}
+  .leg{display:flex;gap:16px;font-size:11.5px;color:var(--muted);margin-top:8px}
+  .leg span{display:flex;align-items:center;gap:6px}
+  .sw{width:10px;height:10px;border-radius:3px;display:inline-block}
+
+  table{width:100%;border-collapse:collapse}
+  .lb th{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted2);text-align:left;padding:6px 8px;font-weight:600}
+  .lb td{padding:9px 8px;border-top:1px solid var(--line);font-size:14px;vertical-align:middle}
+  .lb tr:first-child td{border-top:none}
+  .pname{font-weight:600}
+  .barcell{width:42%}
+  .bartrack{background:var(--panel2);border-radius:6px;height:9px;overflow:hidden}
+  .barfill{height:100%;background:var(--chalk-strong);border-radius:6px}
+  .pred{text-align:right;font-weight:700;font-variant-numeric:tabular-nums}
+  .togo{text-align:right;color:var(--muted);font-variant-numeric:tabular-nums}
+  .withdrawn td{color:var(--muted2)}
+  .withdrawn .pname{text-decoration:line-through;color:var(--muted2);font-weight:500}
+  .tag{font-size:10.5px;padding:2px 7px;border-radius:10px;background:var(--panel2);color:var(--muted);margin-left:6px}
+
+  .teams{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+  .tcard{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:11px 12px}
+  .tcard .ph{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
+  .tcard .pn{font-weight:600;font-size:14px}
+  .tcard .pp{font-size:11.5px;color:var(--muted)}
+  .tchips{display:flex;gap:6px;flex-wrap:wrap}
+  .tchip{font-size:12px;padding:4px 9px;border-radius:8px;background:var(--panel);border:1px solid var(--line)}
+  .tchip.out{text-decoration:line-through;color:var(--muted2);opacity:.6}
+  .tcard.gone .pn{text-decoration:line-through;color:var(--muted2)}
+
+  .fx{margin-top:4px}
+  .rnd{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--gold);margin:14px 0 6px;font-weight:600}
+  .match{display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1px solid var(--line);font-size:13.5px}
+  .match:first-of-type{border-top:none}
+  .mdate{width:52px;color:var(--muted2);font-size:11.5px;flex-shrink:0}
+  .mteams{flex:1;min-width:0}
+  .played{color:var(--gold);font-size:11px;margin-left:6px}
+  .glab{font-size:11px;color:var(--muted2);margin-left:auto}
+  .nocount{color:var(--muted2);font-size:11px;font-style:italic}
+
+  footer{color:var(--muted2);font-size:12px;margin:20px 2px 6px;line-height:1.6}
+  footer b{color:var(--muted)}
+  @media(max-width:620px){
+    .stats{grid-template-columns:repeat(2,1fr)}
+    .teams{grid-template-columns:1fr}
+    h1{font-size:22px}
+  }
+</style>
+</head>
+<body>
+<div class="pitch" aria-hidden="true">
+  <div class="half"></div><div class="circle"></div><div class="spot"></div>
+  <div class="box t"></div><div class="box b"></div>
+</div>
+<div class="wrap">
+
+  <header class="top">
+    <div class="kicker">World Cup 2026 · Predictions / Sweepstake</div>
+    <h1>Darren's knockout goals tracker</h1>
+    <p class="sub">Everyone predicted how many goals will be scored across the knockout rounds — Round of 32 through the final. Only goals in <b>normal time</b> count (extra-time and penalty goals don't), and the third-place play-off doesn't count. This tracks the goals as they're scored, with everyone's prediction for reference. Closest at the final whistle wins.</p>
+    <div class="asof"><span class="dot"></span> Auto-updated <span id="asof">—</span> · <span id="countdown"></span></div>
+  </header>
+
+  <div class="stats" id="stats"></div>
+
+  <div class="card">
+    <h2><span class="ic">&#9917;</span> Goals so far vs the predictions</h2>
+    <p class="hint">The running total of qualifying goals, climbing towards everyone's predictions (the gold band). Hover or tap a marker to see who it is.</p>
+    <div class="pbar" id="pbar"></div>
+    <div class="leg">
+      <span><i class="sw" style="background:var(--gold)"></i> Goals scored so far</span>
+      <span><i class="sw" style="background:var(--chalk-strong)"></i> Predictions</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2><span class="ic">&#128203;</span> Everyone's predictions <span class="tag">for reference</span></h2>
+    <p class="hint">Locked-in predictions, lowest to highest. "To reach" is how many more goals before the total hits that number.</p>
+    <table class="lb"><thead><tr>
+      <th>Player</th><th class="barcell">Prediction</th>
+      <th style="text-align:right">Goals</th><th style="text-align:right">To reach</th>
+    </tr></thead><tbody id="predbody"></tbody></table>
+  </div>
+
+  <div class="card">
+    <h2><span class="ic">&#9917;</span> Teams drawn</h2>
+    <p class="hint">Everyone — Steve included — drew teams and wants them to win the tournament. Knocked-out teams are struck through.</p>
+    <div class="teams" id="teams"></div>
+  </div>
+
+  <div class="card">
+    <h2><span class="ic">&#128197;</span> Results &amp; fixtures</h2>
+    <p class="hint">Knockout results as they happen, updated automatically after each game finishes.</p>
+    <div class="fx" id="fixtures"></div>
+  </div>
+
+  <footer id="foot"></footer>
+</div>
+
+<script>
+const FINAL_DATE = new Date("2026-07-19T19:00:00");
+let SEED_ASOF = "—";
+
+const players = [
+  {name:"Steve",  pred:null, withdrawn:true, teams:["France","Canada","Ghana"]},
+  {name:"Hunty",  pred:82, teams:["Argentina","Senegal","Sweden"]},
+  {name:"Jack",   pred:81, teams:["England","Switzerland","Austria"]},
+  {name:"Glen",   pred:84, teams:["Spain","Egypt","Bosnia"]},
+  {name:"Felch",  pred:71, teams:["Algeria","Paraguay","DR Congo"]},
+  {name:"Frank",  pred:96, teams:["Brazil","Morocco","South Africa"]},
+  {name:"Mudd",   pred:86, teams:["Germany","Belgium","Cape Verde"]},
+  {name:"Gareth", pred:72, teams:["Netherlands","Ivory Coast","Australia"]},
+  {name:"Laul",   pred:73, teams:["Ecuador","Croatia"]},
+  {name:"Egg",    pred:88, teams:["Portugal","Colombia"]},
+  {name:"Dal",    pred:93, teams:["Norway","Mexico"]},
+  {name:"Lakey",  pred:77, teams:["USA","Japan"]}
+];
+
+let MATCHES = [
+  {id:"r32-1",  rnd:"Round of 32", date:"28 Jun", home:"South Africa", away:"Canada", ng:1, counts:true, det:"0–1 (Eustáquio 90+2')"},
+  {id:"r32-2",  rnd:"Round of 32", date:"29 Jun", home:"Brazil", away:"Japan", ng:3, counts:true, det:"2–1 (Sano 29', Casemiro 56', Martinelli 90+5')"},
+  {id:"r32-3",  rnd:"Round of 32", date:"29 Jun", home:"Germany", away:"Paraguay", ng:null, counts:true},
+  {id:"r32-4",  rnd:"Round of 32", date:"29 Jun", home:"Netherlands", away:"Morocco", ng:null, counts:true},
+  {id:"r32-5",  rnd:"Round of 32", date:"30 Jun", home:"France", away:"Sweden", ng:null, counts:true},
+  {id:"r32-6",  rnd:"Round of 32", date:"30 Jun", home:"Ivory Coast", away:"Norway", ng:null, counts:true},
+  {id:"r32-7",  rnd:"Round of 32", date:"30 Jun", home:"Mexico", away:"Ecuador", ng:null, counts:true},
+  {id:"r32-8",  rnd:"Round of 32", date:"1 Jul",  home:"England", away:"DR Congo", ng:null, counts:true},
+  {id:"r32-9",  rnd:"Round of 32", date:"1 Jul",  home:"United States", away:"Bosnia", ng:null, counts:true},
+  {id:"r32-10", rnd:"Round of 32", date:"1 Jul",  home:"Belgium", away:"Senegal", ng:null, counts:true},
+  {id:"r32-11", rnd:"Round of 32", date:"2 Jul",  home:"Portugal", away:"Croatia", ng:null, counts:true},
+  {id:"r32-12", rnd:"Round of 32", date:"2 Jul",  home:"Spain", away:"Austria", ng:null, counts:true},
+  {id:"r32-13", rnd:"Round of 32", date:"2 Jul",  home:"Switzerland", away:"Algeria", ng:null, counts:true},
+  {id:"r32-14", rnd:"Round of 32", date:"3 Jul",  home:"Argentina", away:"Cape Verde", ng:null, counts:true},
+  {id:"r32-15", rnd:"Round of 32", date:"3 Jul",  home:"Colombia", away:"Ghana", ng:null, counts:true},
+  {id:"r32-16", rnd:"Round of 32", date:"3 Jul",  home:"Australia", away:"Egypt", ng:null, counts:true}
+];
+function placeholders(rnd, n, dates){
+  const a=[];
+  for(let i=0;i<n;i++) a.push({id:rnd.replace(/\s/g,"").toLowerCase()+"-"+(i+1), rnd, date:dates, home:"TBD", away:"TBD", ng:null, counts:true});
+  return a;
+}
+MATCHES.push(...placeholders("Round of 16",8,"4–7 Jul"));
+MATCHES.push(...placeholders("Quarter-finals",4,"9–11 Jul"));
+MATCHES.push(...placeholders("Semi-finals",2,"14–15 Jul"));
+MATCHES.push({id:"third", rnd:"Third-place play-off", date:"18 Jul", home:"TBD", away:"TBD", ng:null, counts:false});
+MATCHES.push({id:"final", rnd:"Final", date:"19 Jul", home:"TBD", away:"TBD", ng:null, counts:true});
+
+let SEED_OUT = ["South Africa","Japan"];
+const COUNTING_TOTAL = 31;
+
+function countingTotal(){ return COUNTING_TOTAL; }
+function goalsToDate(){
+  let g=0; MATCHES.forEach(m=>{ if(m.counts && m.ng!=null) g+=m.ng; }); return g;
+}
+function gamesPlayed(){
+  let n=0; MATCHES.forEach(m=>{ if(m.counts && m.ng!=null) n++; }); return n;
+}
+function currentRate(){ const gp=gamesPlayed(); return gp? goalsToDate()/gp : 0; }
+
+const $ = s=>document.querySelector(s);
+
+function setHL(name){
+  if(!name) return;
+  document.querySelectorAll(".pmk").forEach(m=>m.classList.toggle("hl", m.dataset.name===name));
+  document.querySelectorAll("#predbody tr").forEach(r=>r.classList.toggle("hl", r.dataset.name===name));
+  const tip=$("#pmk-tip"), mk=document.querySelector('.pmk[data-name="'+name+'"]');
+  if(tip&&mk){ tip.textContent=name; tip.style.left=mk.style.left; tip.style.display="block"; }
+}
+function clearHL(){
+  document.querySelectorAll(".pmk.hl, #predbody tr.hl").forEach(e=>e.classList.remove("hl"));
+  const tip=$("#pmk-tip"); if(tip) tip.style.display="none";
+}
+document.addEventListener("click",clearHL);
+
+function renderStats(){
+  const gd=goalsToDate(), gp=gamesPlayed(), tot=countingTotal();
+  const days=Math.max(0,Math.ceil((FINAL_DATE-new Date())/86400000));
+  $("#stats").innerHTML = `
+    <div class="stat hero"><div class="lab">Goals so far</div><div class="val num">${gd}</div><div class="meta">normal time only</div></div>
+    <div class="stat"><div class="lab">Games counted</div><div class="val num">${gp}<small> / ${tot}</small></div><div class="meta">knockout games</div></div>
+    <div class="stat"><div class="lab">Goals per game</div><div class="val num">${currentRate().toFixed(2)}</div><div class="meta">so far</div></div>
+    <div class="stat"><div class="lab">Days to final</div><div class="val num">${days}</div><div class="meta">19 Jul</div></div>`;
+  $("#countdown").textContent = days>0 ? days+" days to the final" : "final played";
+}
+
+function renderProgress(){
+  const el=$("#pbar"); const gd=goalsToDate();
+  const actives=players.filter(p=>!p.withdrawn);
+  const preds=actives.map(p=>p.pred); const lo=Math.min(...preds), hi=Math.max(...preds);
+  const AX=110; const x=v=>(Math.min(AX,Math.max(0,v))/AX)*100;
+  let html=`<div class="ptrack"><div class="pfill" style="width:${x(gd)}%"></div></div>`;
+  html+=`<div class="pcap" style="left:0;color:var(--gold)">${gd} so far</div>`;
+  const mid=(lo+hi)/2;
+  html+=`<div class="pcap" style="left:${x(mid)}%;transform:translateX(-50%);color:var(--chalk-strong)">predictions ${lo}–${hi}</div>`;
+  actives.forEach(p=>{ html+=`<div class="pmk" data-name="${p.name}" style="left:${x(p.pred)}%"></div>`; });
+  [0,25,50,75,100].forEach(t=>{ html+=`<div class="ptick" style="left:${x(t)}%">${t}</div>`; });
+  html+=`<div class="pmk-tip" id="pmk-tip"></div>`;
+  el.innerHTML=html;
+  el.querySelectorAll(".pmk").forEach(m=>{
+    m.addEventListener("mouseenter",()=>setHL(m.dataset.name));
+    m.addEventListener("mouseleave",clearHL);
+    m.addEventListener("click",e=>{e.stopPropagation();setHL(m.dataset.name);});
+  });
+}
+
+function renderPredictions(){
+  const gd=goalsToDate();
+  const rows=players.filter(p=>!p.withdrawn).slice().sort((a,b)=>a.pred-b.pred);
+  const maxP=Math.max(...rows.map(r=>r.pred));
+  let html=rows.map(r=>{
+    const togo=Math.max(0,r.pred-gd);
+    const reached=togo===0;
+    return `<tr data-name="${r.name}">
+      <td class="pname">${r.name}</td>
+      <td class="barcell"><div class="bartrack"><div class="barfill" style="width:${(r.pred/maxP*100).toFixed(0)}%"></div></div></td>
+      <td class="pred num">${r.pred}</td>
+      <td class="togo num">${reached?'<span style="color:var(--gold)">reached</span>':togo}</td></tr>`;
+  }).join("");
+  const steve=players.find(p=>p.withdrawn);
+  if(steve) html+=`<tr class="withdrawn"><td class="pname">${steve.name}</td>
+    <td class="barcell"></td><td class="pred">—</td><td class="togo">withdrawn</td></tr>`;
+  $("#predbody").innerHTML=html;
+  $("#predbody").querySelectorAll("tr[data-name]").forEach(tr=>{
+    tr.addEventListener("mouseenter",()=>setHL(tr.dataset.name));
+    tr.addEventListener("mouseleave",clearHL);
+    tr.addEventListener("click",e=>{e.stopPropagation();setHL(tr.dataset.name);});
+  });
+}
+
+function renderTeams(){
+  $("#teams").innerHTML = players.map(p=>{
+    const alive=p.teams.filter(t=>!SEED_OUT.includes(t)).length;
+    const gone = alive===0 ? " gone":"";
+    const chips=p.teams.map(t=>{
+      const out=SEED_OUT.includes(t)?" out":"";
+      return `<span class="tchip${out}">${t}</span>`;
+    }).join("");
+    return `<div class="tcard${gone}">
+      <div class="ph"><span class="pn">${p.name}</span>
+      <span class="pp">${alive}/${p.teams.length} alive</span></div>
+      <div class="tchips">${chips}</div></div>`;
+  }).join("");
+}
+
+function renderFixtures(){
+  let html=""; let cur="";
+  MATCHES.forEach(m=>{
+    if(m.rnd!==cur){ cur=m.rnd; html+=`<div class="rnd">${m.rnd}</div>`; }
+    const g=m.ng;
+    const teams = (!m.home || m.home==="TBD") ? `<span style="color:var(--muted2)">${m.rnd} — to be decided</span>`
+      : `${m.home} <span style="color:var(--muted2)">v</span> ${m.away}`;
+    let right;
+    if(!m.counts){
+      right=`<span class="nocount">doesn't count</span>`;
+    } else if(g!=null){
+      right=`<span class="played">&#10003; ${g} ${g===1?'goal':'goals'}</span>`;
+    } else {
+      right=`<span class="glab">to play</span>`;
+    }
+    const det = m.det && g!=null ? `<div style="font-size:11px;color:var(--muted2)">${m.det}</div>` : "";
+    html+=`<div class="match"><div class="mdate">${m.date}</div>
+      <div class="mteams">${teams}${det}</div>${right}</div>`;
+  });
+  $("#fixtures").innerHTML=html;
+}
+
+function renderFooter(){
+  $("#foot").innerHTML = `<b>Rules:</b> goals must be scored within normal time (90 mins + stoppage). Extra-time and penalty-shootout goals don't count, and the third-place play-off doesn't count. Winner = the prediction closest to the final total.<br>
+  <b>Data:</b> real World Cup 2026 knockout stage, auto-updated to ${SEED_ASOF}. Steve is out of the goals prediction (his "0" is void) but is still in the teams competition.`;
+}
+
+function renderAll(){
+  $("#asof").textContent=SEED_ASOF;
+  renderStats(); renderProgress(); renderPredictions(); renderFixtures();
+}
+
+function renderEverything(){ renderTeams(); renderFooter(); renderAll(); }
+
+fetch('data.json?_='+Date.now(), {cache:'no-store'})
+  .then(r=>r.ok?r.json():Promise.reject())
+  .then(d=>{
+    if(Array.isArray(d.matches) && d.matches.length) MATCHES=d.matches;
+    if(Array.isArray(d.eliminated)) SEED_OUT=d.eliminated;
+    if(d.asOf) SEED_ASOF=d.asOf;
+  })
+  .catch(()=>{})
+  .finally(renderEverything);
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+name: Update dashboard
+
+on:
+  schedule:
+    - cron: "*/20 * * * *"   # every 20 minutes (UTC); GitHub may delay under load
+  workflow_dispatch: {}       # lets you run it manually from the Actions tab
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-dashboard
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Generate data.json
+        env:
+          API_FOOTBALL_KEY: ${{ secrets.API_FOOTBALL_KEY }}
+        run: node scripts/generate.mjs
+
+      - name: Commit if changed
+        run: |
+          git config user.name "wc2026-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ -n "$(git status --porcelain data.json)" ]; then
+            git add data.json
+            git commit -m "Update results ($(date -u +'%Y-%m-%d %H:%M UTC'))"
+            git push
+          else
+            echo "No change to data.json"
+          fi
