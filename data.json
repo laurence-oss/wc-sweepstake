@@ -1,7 +1,8 @@
 {
-  "asOf": "30 Jun 2026, 17:26 UTC",
+  "asOf": "30 Jun 2026, 22:05 UTC",
   "eliminated": [
     "Germany",
+    "Ivory Coast",
     "Japan",
     "Netherlands",
     "South Africa"
@@ -53,8 +54,9 @@
       "date": "30 Jun",
       "home": "Ivory Coast",
       "away": "Norway",
-      "ng": null,
-      "counts": true
+      "ng": 3,
+      "counts": true,
+      "det": "1–2"
     },
     {
       "id": "1565177",
@@ -161,6 +163,15 @@
       "date": "4 Jul",
       "home": "Canada",
       "away": "Morocco",
+      "ng": null,
+      "counts": true
+    },
+    {
+      "id": "1568100",
+      "rnd": "Round of 16",
+      "date": "5 Jul",
+      "home": "Brazil",
+      "away": "Norway",
       "ng": null,
       "counts": true
     }
