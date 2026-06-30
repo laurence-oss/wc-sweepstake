@@ -33,8 +33,8 @@ const ALIAS = {
   "United States": "USA",
   "Congo DR": "DR Congo", "Congo": "DR Congo",
   "Cote D'Ivoire": "Ivory Coast", "Côte d'Ivoire": "Ivory Coast",
-  "Cabo Verde": "Cape Verde",
-  "Bosnia and Herzegovina": "Bosnia",
+  "Cabo Verde": "Cape Verde", "Cape Verde Islands": "Cape Verde",
+  "Bosnia and Herzegovina": "Bosnia", "Bosnia & Herzegovina": "Bosnia",
   "Holland": "Netherlands"
 };
 const norm = n => (n == null ? n : (ALIAS[n] || n));

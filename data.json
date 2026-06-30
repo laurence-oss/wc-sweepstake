@@ -1,38 +1,168 @@
 {
-  "asOf": "29 Jun 2026",
-  "eliminated": ["South Africa", "Japan"],
+  "asOf": "30 Jun 2026, 10:06 UTC",
+  "eliminated": [
+    "Germany",
+    "Japan",
+    "Netherlands",
+    "South Africa"
+  ],
   "matches": [
-    {"id":"r32-1","rnd":"Round of 32","date":"28 Jun","home":"South Africa","away":"Canada","ng":1,"counts":true,"det":"0–1 (Eustáquio 90+2')"},
-    {"id":"r32-2","rnd":"Round of 32","date":"29 Jun","home":"Brazil","away":"Japan","ng":3,"counts":true,"det":"2–1 (Sano 29', Casemiro 56', Martinelli 90+5')"},
-    {"id":"r32-3","rnd":"Round of 32","date":"29 Jun","home":"Germany","away":"Paraguay","ng":null,"counts":true},
-    {"id":"r32-4","rnd":"Round of 32","date":"29 Jun","home":"Netherlands","away":"Morocco","ng":null,"counts":true},
-    {"id":"r32-5","rnd":"Round of 32","date":"30 Jun","home":"France","away":"Sweden","ng":null,"counts":true},
-    {"id":"r32-6","rnd":"Round of 32","date":"30 Jun","home":"Ivory Coast","away":"Norway","ng":null,"counts":true},
-    {"id":"r32-7","rnd":"Round of 32","date":"30 Jun","home":"Mexico","away":"Ecuador","ng":null,"counts":true},
-    {"id":"r32-8","rnd":"Round of 32","date":"1 Jul","home":"England","away":"DR Congo","ng":null,"counts":true},
-    {"id":"r32-9","rnd":"Round of 32","date":"1 Jul","home":"United States","away":"Bosnia","ng":null,"counts":true},
-    {"id":"r32-10","rnd":"Round of 32","date":"1 Jul","home":"Belgium","away":"Senegal","ng":null,"counts":true},
-    {"id":"r32-11","rnd":"Round of 32","date":"2 Jul","home":"Portugal","away":"Croatia","ng":null,"counts":true},
-    {"id":"r32-12","rnd":"Round of 32","date":"2 Jul","home":"Spain","away":"Austria","ng":null,"counts":true},
-    {"id":"r32-13","rnd":"Round of 32","date":"2 Jul","home":"Switzerland","away":"Algeria","ng":null,"counts":true},
-    {"id":"r32-14","rnd":"Round of 32","date":"3 Jul","home":"Argentina","away":"Cape Verde","ng":null,"counts":true},
-    {"id":"r32-15","rnd":"Round of 32","date":"3 Jul","home":"Colombia","away":"Ghana","ng":null,"counts":true},
-    {"id":"r32-16","rnd":"Round of 32","date":"3 Jul","home":"Australia","away":"Egypt","ng":null,"counts":true},
-    {"id":"r16-1","rnd":"Round of 16","date":"4–7 Jul","home":"TBD","away":"TBD","ng":null,"counts":true},
-    {"id":"r16-2","rnd":"Round of 16","date":"4–7 Jul","home":"TBD","away":"TBD","ng":null,"counts":true},
-    {"id":"r16-3","rnd":"Round of 16","date":"4–7 Jul","home":"TBD","away":"TBD","ng":null,"counts":true},
-    {"id":"r16-4","rnd":"Round of 16","date":"4–7 Jul","home":"TBD","away":"TBD","ng":null,"counts":true},
-    {"id":"r16-5","rnd":"Round of 16","date":"4–7 Jul","home":"TBD","away":"TBD","ng":null,"counts":true},
-    {"id":"r16-6","rnd":"Round of 16","date":"4–7 Jul","home":"TBD","away":"TBD","ng":null,"counts":true},
-    {"id":"r16-7","rnd":"Round of 16","date":"4–7 Jul","home":"TBD","away":"TBD","ng":null,"counts":true},
-    {"id":"r16-8","rnd":"Round of 16","date":"4–7 Jul","home":"TBD","away":"TBD","ng":null,"counts":true},
-    {"id":"qf-1","rnd":"Quarter-finals","date":"9–11 Jul","home":"TBD","away":"TBD","ng":null,"counts":true},
-    {"id":"qf-2","rnd":"Quarter-finals","date":"9–11 Jul","home":"TBD","away":"TBD","ng":null,"counts":true},
-    {"id":"qf-3","rnd":"Quarter-finals","date":"9–11 Jul","home":"TBD","away":"TBD","ng":null,"counts":true},
-    {"id":"qf-4","rnd":"Quarter-finals","date":"9–11 Jul","home":"TBD","away":"TBD","ng":null,"counts":true},
-    {"id":"sf-1","rnd":"Semi-finals","date":"14–15 Jul","home":"TBD","away":"TBD","ng":null,"counts":true},
-    {"id":"sf-2","rnd":"Semi-finals","date":"14–15 Jul","home":"TBD","away":"TBD","ng":null,"counts":true},
-    {"id":"third","rnd":"Third-place play-off","date":"18 Jul","home":"TBD","away":"TBD","ng":null,"counts":false},
-    {"id":"final","rnd":"Final","date":"19 Jul","home":"TBD","away":"TBD","ng":null,"counts":true}
+    {
+      "id": "1561329",
+      "rnd": "Round of 32",
+      "date": "28 Jun",
+      "home": "South Africa",
+      "away": "Canada",
+      "ng": 1,
+      "counts": true,
+      "det": "0–1"
+    },
+    {
+      "id": "1562344",
+      "rnd": "Round of 32",
+      "date": "29 Jun",
+      "home": "Brazil",
+      "away": "Japan",
+      "ng": 3,
+      "counts": true,
+      "det": "2–1"
+    },
+    {
+      "id": "1565176",
+      "rnd": "Round of 32",
+      "date": "29 Jun",
+      "home": "Germany",
+      "away": "Paraguay",
+      "ng": 2,
+      "counts": true,
+      "det": "1–1 (pens)"
+    },
+    {
+      "id": "1562345",
+      "rnd": "Round of 32",
+      "date": "30 Jun",
+      "home": "Netherlands",
+      "away": "Morocco",
+      "ng": 2,
+      "counts": true,
+      "det": "1–1 (pens)"
+    },
+    {
+      "id": "1564789",
+      "rnd": "Round of 32",
+      "date": "30 Jun",
+      "home": "Ivory Coast",
+      "away": "Norway",
+      "ng": null,
+      "counts": true
+    },
+    {
+      "id": "1565177",
+      "rnd": "Round of 32",
+      "date": "30 Jun",
+      "home": "France",
+      "away": "Sweden",
+      "ng": null,
+      "counts": true
+    },
+    {
+      "id": "1567306",
+      "rnd": "Round of 32",
+      "date": "1 Jul",
+      "home": "Mexico",
+      "away": "Ecuador",
+      "ng": null,
+      "counts": true
+    },
+    {
+      "id": "1567307",
+      "rnd": "Round of 32",
+      "date": "1 Jul",
+      "home": "England",
+      "away": "DR Congo",
+      "ng": null,
+      "counts": true
+    },
+    {
+      "id": "1567308",
+      "rnd": "Round of 32",
+      "date": "1 Jul",
+      "home": "Belgium",
+      "away": "Senegal",
+      "ng": null,
+      "counts": true
+    },
+    {
+      "id": "1562586",
+      "rnd": "Round of 32",
+      "date": "2 Jul",
+      "home": "USA",
+      "away": "Bosnia",
+      "ng": null,
+      "counts": true
+    },
+    {
+      "id": "1567311",
+      "rnd": "Round of 32",
+      "date": "2 Jul",
+      "home": "Spain",
+      "away": "Austria",
+      "ng": null,
+      "counts": true
+    },
+    {
+      "id": "1567309",
+      "rnd": "Round of 32",
+      "date": "2 Jul",
+      "home": "Portugal",
+      "away": "Croatia",
+      "ng": null,
+      "counts": true
+    },
+    {
+      "id": "1567312",
+      "rnd": "Round of 32",
+      "date": "3 Jul",
+      "home": "Switzerland",
+      "away": "Algeria",
+      "ng": null,
+      "counts": true
+    },
+    {
+      "id": "1565178",
+      "rnd": "Round of 32",
+      "date": "3 Jul",
+      "home": "Australia",
+      "away": "Egypt",
+      "ng": null,
+      "counts": true
+    },
+    {
+      "id": "1565179",
+      "rnd": "Round of 32",
+      "date": "3 Jul",
+      "home": "Argentina",
+      "away": "Cape Verde",
+      "ng": null,
+      "counts": true
+    },
+    {
+      "id": "1567310",
+      "rnd": "Round of 32",
+      "date": "4 Jul",
+      "home": "Colombia",
+      "away": "Ghana",
+      "ng": null,
+      "counts": true
+    },
+    {
+      "id": "1567824",
+      "rnd": "Round of 16",
+      "date": "4 Jul",
+      "home": "Canada",
+      "away": "Morocco",
+      "ng": null,
+      "counts": true
+    }
   ]
 }
