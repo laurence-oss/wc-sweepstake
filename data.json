@@ -1,11 +1,13 @@
 {
-  "asOf": "30 Jun 2026, 22:27 UTC",
+  "asOf": "1 Jul 2026, 06:12 UTC",
   "eliminated": [
+    "Ecuador",
     "Germany",
     "Ivory Coast",
     "Japan",
     "Netherlands",
-    "South Africa"
+    "South Africa",
+    "Sweden"
   ],
   "matches": [
     {
@@ -64,8 +66,9 @@
       "date": "30 Jun",
       "home": "France",
       "away": "Sweden",
-      "ng": null,
-      "counts": true
+      "ng": 3,
+      "counts": true,
+      "det": "3–0"
     },
     {
       "id": "1567306",
@@ -73,8 +76,9 @@
       "date": "1 Jul",
       "home": "Mexico",
       "away": "Ecuador",
-      "ng": null,
-      "counts": true
+      "ng": 2,
+      "counts": true,
+      "det": "2–0"
     },
     {
       "id": "1567307",
@@ -163,6 +167,15 @@
       "date": "4 Jul",
       "home": "Canada",
       "away": "Morocco",
+      "ng": null,
+      "counts": true
+    },
+    {
+      "id": "1569870",
+      "rnd": "Round of 16",
+      "date": "4 Jul",
+      "home": "Paraguay",
+      "away": "France",
       "ng": null,
       "counts": true
     },
