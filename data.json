@@ -1,5 +1,5 @@
 {
-  "asOf": "1 Jul 2026, 22:45 UTC",
+  "asOf": "1 Jul 2026, 22:50 UTC",
   "eliminated": [
     "DR Congo",
     "Ecuador",
@@ -7,6 +7,7 @@
     "Ivory Coast",
     "Japan",
     "Netherlands",
+    "Senegal",
     "South Africa",
     "Sweden"
   ],
@@ -97,8 +98,9 @@
       "date": "1 Jul",
       "home": "Belgium",
       "away": "Senegal",
-      "ng": null,
-      "counts": true
+      "ng": 4,
+      "counts": true,
+      "det": "2–2 (a.e.t.)"
     },
     {
       "id": "1562586",
