@@ -1,6 +1,7 @@
 {
-  "asOf": "1 Jul 2026, 16:55 UTC",
+  "asOf": "1 Jul 2026, 18:20 UTC",
   "eliminated": [
+    "DR Congo",
     "Ecuador",
     "Germany",
     "Ivory Coast",
@@ -86,8 +87,9 @@
       "date": "1 Jul",
       "home": "England",
       "away": "DR Congo",
-      "ng": null,
-      "counts": true
+      "ng": 3,
+      "counts": true,
+      "det": "2–1"
     },
     {
       "id": "1567308",
