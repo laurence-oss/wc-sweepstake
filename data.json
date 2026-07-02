@@ -1,6 +1,7 @@
 {
-  "asOf": "2 Jul 2026, 02:05 UTC",
+  "asOf": "2 Jul 2026, 02:10 UTC",
   "eliminated": [
+    "Bosnia",
     "DR Congo",
     "Ecuador",
     "Germany",
@@ -108,8 +109,9 @@
       "date": "2 Jul",
       "home": "USA",
       "away": "Bosnia",
-      "ng": null,
-      "counts": true
+      "ng": 2,
+      "counts": true,
+      "det": "2–0"
     },
     {
       "id": "1567311",
