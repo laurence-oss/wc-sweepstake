@@ -1,5 +1,5 @@
 {
-  "asOf": "2 Jul 2026, 05:05 UTC",
+  "asOf": "2 Jul 2026, 05:10 UTC",
   "eliminated": [
     "Bosnia",
     "DR Congo",
@@ -191,6 +191,24 @@
       "date": "5 Jul",
       "home": "Brazil",
       "away": "Norway",
+      "ng": null,
+      "counts": true
+    },
+    {
+      "id": "1570714",
+      "rnd": "Round of 16",
+      "date": "6 Jul",
+      "home": "Mexico",
+      "away": "England",
+      "ng": null,
+      "counts": true
+    },
+    {
+      "id": "1570715",
+      "rnd": "Round of 16",
+      "date": "7 Jul",
+      "home": "USA",
+      "away": "Belgium",
       "ng": null,
       "counts": true
     }
