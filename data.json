@@ -1,8 +1,9 @@
 {
-  "asOf": "3 Jul 2026, 01:05 UTC",
+  "asOf": "3 Jul 2026, 01:10 UTC",
   "eliminated": [
     "Austria",
     "Bosnia",
+    "Croatia",
     "DR Congo",
     "Ecuador",
     "Germany",
@@ -130,8 +131,9 @@
       "date": "2 Jul",
       "home": "Portugal",
       "away": "Croatia",
-      "ng": null,
-      "counts": true
+      "ng": 3,
+      "counts": true,
+      "det": "2–1"
     },
     {
       "id": "1567312",
