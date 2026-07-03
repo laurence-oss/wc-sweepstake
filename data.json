@@ -1,7 +1,8 @@
 {
-  "asOf": "3 Jul 2026, 20:50 UTC",
+  "asOf": "3 Jul 2026, 20:55 UTC",
   "eliminated": [
     "Algeria",
+    "Australia",
     "Austria",
     "Bosnia",
     "Croatia",
@@ -152,8 +153,9 @@
       "date": "3 Jul",
       "home": "Australia",
       "away": "Egypt",
-      "ng": null,
-      "counts": true
+      "ng": 2,
+      "counts": true,
+      "det": "1–1 (pens)"
     },
     {
       "id": "1565179",
