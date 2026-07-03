@@ -1,5 +1,5 @@
 {
-  "asOf": "3 Jul 2026, 06:50 UTC",
+  "asOf": "3 Jul 2026, 06:55 UTC",
   "eliminated": [
     "Algeria",
     "Austria",
@@ -206,6 +206,15 @@
       "date": "6 Jul",
       "home": "Mexico",
       "away": "England",
+      "ng": null,
+      "counts": true
+    },
+    {
+      "id": "1576756",
+      "rnd": "Round of 16",
+      "date": "6 Jul",
+      "home": "Portugal",
+      "away": "Spain",
       "ng": null,
       "counts": true
     },
