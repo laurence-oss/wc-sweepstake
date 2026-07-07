@@ -1,5 +1,5 @@
 {
-  "asOf": "7 Jul 2026, 22:45 UTC",
+  "asOf": "7 Jul 2026, 22:50 UTC",
   "eliminated": [
     "Algeria",
     "Australia",
@@ -8,6 +8,7 @@
     "Brazil",
     "Canada",
     "Cape Verde",
+    "Colombia",
     "Croatia",
     "DR Congo",
     "Ecuador",
@@ -262,8 +263,9 @@
       "date": "7 Jul",
       "home": "Switzerland",
       "away": "Colombia",
-      "ng": null,
-      "counts": true
+      "ng": 0,
+      "counts": true,
+      "det": "0–0 (pens)"
     },
     {
       "id": "1578539",
