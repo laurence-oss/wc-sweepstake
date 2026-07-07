@@ -1,5 +1,5 @@
 {
-  "asOf": "7 Jul 2026, 02:05 UTC",
+  "asOf": "7 Jul 2026, 02:10 UTC",
   "eliminated": [
     "Algeria",
     "Australia",
@@ -269,6 +269,15 @@
       "date": "9 Jul",
       "home": "France",
       "away": "Morocco",
+      "ng": null,
+      "counts": true
+    },
+    {
+      "id": "1581821",
+      "rnd": "Quarter-finals",
+      "date": "10 Jul",
+      "home": "Spain",
+      "away": "Belgium",
       "ng": null,
       "counts": true
     },
