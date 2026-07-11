@@ -1,5 +1,5 @@
 {
-  "asOf": "11 Jul 2026, 23:45 UTC",
+  "asOf": "11 Jul 2026, 23:50 UTC",
   "eliminated": [
     "Algeria",
     "Australia",
@@ -21,6 +21,7 @@
     "Mexico",
     "Morocco",
     "Netherlands",
+    "Norway",
     "Paraguay",
     "Portugal",
     "Senegal",
@@ -295,8 +296,9 @@
       "date": "11 Jul",
       "home": "Norway",
       "away": "England",
-      "ng": null,
-      "counts": true
+      "ng": 2,
+      "counts": true,
+      "det": "1–1 (a.e.t.)"
     },
     {
       "id": "1582681",
