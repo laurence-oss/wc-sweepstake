@@ -1,5 +1,5 @@
 {
-  "asOf": "14 Jul 2026, 20:55 UTC",
+  "asOf": "14 Jul 2026, 21:01 UTC",
   "eliminated": [
     "Algeria",
     "Australia",
@@ -14,6 +14,7 @@
     "DR Congo",
     "Ecuador",
     "Egypt",
+    "France",
     "Germany",
     "Ghana",
     "Ivory Coast",
@@ -317,8 +318,9 @@
       "date": "14 Jul",
       "home": "France",
       "away": "Spain",
-      "ng": null,
-      "counts": true
+      "ng": 2,
+      "counts": true,
+      "det": "0–2"
     },
     {
       "id": "1586077",
