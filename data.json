@@ -1,5 +1,5 @@
 {
-  "asOf": "15 Jul 2026, 21:01 UTC",
+  "asOf": "15 Jul 2026, 21:05 UTC",
   "eliminated": [
     "Algeria",
     "Australia",
@@ -14,6 +14,7 @@
     "DR Congo",
     "Ecuador",
     "Egypt",
+    "England",
     "France",
     "Germany",
     "Ghana",
@@ -327,6 +328,25 @@
       "rnd": "Semi-finals",
       "date": "15 Jul",
       "home": "England",
+      "away": "Argentina",
+      "ng": 3,
+      "counts": true,
+      "det": "1–2"
+    },
+    {
+      "id": "1591865",
+      "rnd": "Third-place play-off",
+      "date": "18 Jul",
+      "home": "France",
+      "away": "England",
+      "ng": null,
+      "counts": false
+    },
+    {
+      "id": "1591866",
+      "rnd": "Final",
+      "date": "19 Jul",
+      "home": "Spain",
       "away": "Argentina",
       "ng": null,
       "counts": true
