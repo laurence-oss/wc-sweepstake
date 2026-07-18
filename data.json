@@ -1,5 +1,5 @@
 {
-  "asOf": "18 Jul 2026, 22:55 UTC",
+  "asOf": "18 Jul 2026, 23:02 UTC",
   "eliminated": [
     "Algeria",
     "Australia",
@@ -339,8 +339,9 @@
       "date": "18 Jul",
       "home": "France",
       "away": "England",
-      "ng": null,
-      "counts": false
+      "ng": 10,
+      "counts": false,
+      "det": "4–6"
     },
     {
       "id": "1591866",
