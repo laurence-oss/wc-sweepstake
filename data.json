@@ -1,7 +1,8 @@
 {
-  "asOf": "19 Jul 2026, 22:00 UTC",
+  "asOf": "19 Jul 2026, 22:05 UTC",
   "eliminated": [
     "Algeria",
+    "Argentina",
     "Australia",
     "Austria",
     "Belgium",
@@ -349,8 +350,9 @@
       "date": "19 Jul",
       "home": "Spain",
       "away": "Argentina",
-      "ng": null,
-      "counts": true
+      "ng": 0,
+      "counts": true,
+      "det": "0–0 (a.e.t.)"
     }
   ]
 }
